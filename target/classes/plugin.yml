@@ -1,0 +1,7 @@
+name: EventTools
+version: '1.0.0'
+main: me.commandrod.eventtools.Main
+api-version: 1.17
+authors: [ commandROD ]
+description: Recreation of Skeppy's EventTools plugin.
+website: https://github.com/commandrod/EventTools

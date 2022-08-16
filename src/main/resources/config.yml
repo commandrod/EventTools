@@ -1,0 +1,65 @@
+# -> Config version v1.0
+#
+# -> This config uses the MiniMessage API, created by the Kyori Adventure project,
+# -> which provides an HTML-Like syntax for using
+# -> colours and other text decorations in Minecraft.
+# -> Read more here: https://docs.adventure.kyori.net/minimessage/
+#
+# -> Constants:
+# -> 'NONE' means a message will not be sent, and will get replaced
+# -> with Component#empty.
+#
+# -> '[DEFAULT]' means a config message is missing, and the
+# -> plugin is using a hard-coded message. If that happens, I strongly
+# -> suggest copy-pasting the default configuration file from here:
+# -> https://github.com/commandrod/EventTools/blob/main/src/main/resources/config.yml
+
+handlers:
+  spawn:
+    handle: true
+    spawn-location:
+      ==: org.bukkit.Location
+      world: world
+      x: 0
+      y: 65
+      z: 0
+      pitch: 0
+      yaw: 0
+  deaths:
+    handle: false
+  pvp:
+    handle: true
+  connection:
+    handle: true
+
+constants:
+  main: "<dark_aqua>Event</dark_aqua><dark_gray> > </dark_gray><gray>"
+  chat: "<red><b>Chat</b></red><dark_gray> > </dark_gray><gray>"
+  config: "<yellow>Config</yellow><dark_gray> > </dark_gray><gray>"
+  silent: " <gray>[SILENT]</gray>"
+messages:
+  connection:
+    join: '<dark_gray>[<green>+</green>]</dark_gray> <green>%player%</green>'
+    quit: '<dark_gray>[<red>-</red>]</dark_gray> <red>%player%</red>'
+  spawn:
+    teleported: '<dark_aqua>Teleported <aqua>%player%</aqua> to spawn!</dark_aqua>'
+    not-found: '<red>Could not find the spawn!</red>'
+    set: '<yellow>Successfully set the spawn location!</yellow>'
+  deaths:
+    death-message: '<red>%player% <white>has been eliminated</white></red>'
+    kill-message: '<red>%player% <white>has been eliminated by</white> %killer%</red>'
+    respawn: 'NONE'
+  pvp:
+    enabled: "PvP has been <green>ENABLED</green>!"
+    disabled: "PvP has been <red>DISABLED</red>!"
+  chat:
+    unmuted: "Chat has been <green>UNMUTED</green>!"
+    muted: "Chat has been <red>MUTED</red>!"
+    add-muted-chat-viewer: "Now <green>VIEWING</green> messages while chat is muted!"
+    remove-muted-chat-viewer: "Now <red>HIDING</red> messages while chat is muted!"
+    muted-chat-message: "<gold>%player%</gold><gray>:</gray> <yellow>%message%</yellow>"
+  event:
+    started: '<green>STARTED</green> the event!'
+    ended: '<red>ENDED</red> the event!'
+  heal: "You healed <yellow>%player%</yellow>!"
+  reload-config: "Config has been successfully reloaded! <br><gray>[Handlers require a plugin reload to be changed]</gray>"
