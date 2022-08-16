@@ -1,6 +1,5 @@
 package me.commandrod.eventtools.managers;
 
-import lombok.Getter;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -10,22 +9,28 @@ import java.util.Optional;
 
 public class SpawnManager {
 
-    @Getter
-    private Optional<Location> spawn;
+    private final ConfigManager configManager;
+    private final String path;
 
     public SpawnManager(ConfigManager configManager, Logger logger) {
-        this.spawn = Optional.ofNullable(configManager.getConfig().getLocation("handlers.spawn.spawn-location"));
+        this.configManager = configManager;
+        this.path = "handlers.spawn.spawn-location";
 
-        if (spawn.isPresent()) return;
+        if (getSpawn().isPresent()) return;
         logger.error("Could not get the spawn location!");
     }
 
+    public Optional<Location> getSpawn() {
+        return Optional.ofNullable(configManager.getConfig().getLocation(path));
+    }
+
     public void setSpawn(@Nullable Location location) {
-        this.spawn = Optional.ofNullable(location);
+        if (location == null) return;
+        configManager.getConfig().set(path, location);
     }
 
     public boolean teleport(Player player) {
-        spawn.ifPresent(player::teleportAsync);
-        return spawn.isPresent();
+        getSpawn().ifPresent(player::teleportAsync);
+        return getSpawn().isPresent();
     }
 }
