@@ -1,6 +1,6 @@
 # IntelliJ stuff
+.idea/
 target/
-test/
 
 # Compiled class file
 *.class

@@ -10,8 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b30224ac-5be8-420b-9642-a8049194bf6e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/commandrod/eventtools/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/commandrod/eventtools/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/commandrod/eventtools/managers/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/commandrod/eventtools/managers/CommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/commandrod/eventtools/managers/SpawnManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/commandrod/eventtools/managers/SpawnManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,5 +95,16 @@
       <updated>1659578155313</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

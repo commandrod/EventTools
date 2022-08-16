@@ -30,7 +30,8 @@ public class SpawnManager {
     }
 
     public boolean teleport(Player player) {
-        getSpawn().ifPresent(player::teleportAsync);
-        return getSpawn().isPresent();
+        Optional<Location> spawn = getSpawn();
+        spawn.ifPresent(player::teleportAsync);
+        return spawn.isPresent();
     }
 }
