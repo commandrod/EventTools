@@ -17,7 +17,8 @@ import java.util.Set;
 @CommandPermission("eventtools.help")
 public class HelpCommand extends EmptyCommand<CommandSender> {
 
-    @Dependency private MiniMessage miniMessage;
+    @Dependency
+    private MiniMessage miniMessage;
 
     private final Set<HelpCommandInformation> commands = new HashSet<>(Arrays.asList(
             new HelpCommandInformation("eventhelp", "Shows this message"),
@@ -37,9 +38,9 @@ public class HelpCommand extends EmptyCommand<CommandSender> {
         builder.append(miniMessage.deserialize(
 
                 """
-                            <aqua>Commands</aqua>
-                     ﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊
-                     """
+                               <aqua>Commands</aqua>
+                        ﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊﹊
+                        """
         ));
 
         for (HelpCommandInformation information : commands) {
@@ -49,5 +50,6 @@ public class HelpCommand extends EmptyCommand<CommandSender> {
         sender.sendMessage(builder.build());
     }
 
-    private record HelpCommandInformation(String name, String description) { }
+    private record HelpCommandInformation(String name, String description) {
+    }
 }

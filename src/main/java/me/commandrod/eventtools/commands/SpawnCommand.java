@@ -16,8 +16,10 @@ import org.bukkit.entity.Player;
 @CommandPermission("eventtools.spawn")
 public class SpawnCommand extends TargetedCommand<Player> {
 
-    @Dependency private ConfigManager configManager;
-    @Dependency private SpawnManager spawnManager;
+    @Dependency
+    private ConfigManager configManager;
+    @Dependency
+    private SpawnManager spawnManager;
 
     @CommandCompletion("normal|spectator @players @nothing")
     public void handle(Player sender, OnlinePlayer args) {
@@ -35,7 +37,7 @@ public class SpawnCommand extends TargetedCommand<Player> {
 
         Component msg = configManager.getMessages().PREFIX.append(
                 configManager.getTranslatedMessage("spawn.teleported", "<dark_aqua>Teleported <aqua>%player%</aqua> to spawn!</dark_aqua>")
-                   .replaceText(Replacement.builder().replace("%player%", player.getName()).build())
+                        .replaceText(Replacement.builder().replace("%player%", player.getName()).build())
         );
         if (configManager.isEmpty(msg)) return;
 

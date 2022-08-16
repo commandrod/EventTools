@@ -12,7 +12,8 @@ import org.bukkit.command.CommandSender;
 @CommandPermission("eventtools.reloadconfig")
 public class ReloadConfigCommand extends EmptyCommand<CommandSender> {
 
-    @Dependency private ConfigManager configManager;
+    @Dependency
+    private ConfigManager configManager;
 
     public void handle(CommandSender sender) {
         configManager.reload();

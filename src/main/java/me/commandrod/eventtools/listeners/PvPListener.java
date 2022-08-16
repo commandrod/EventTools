@@ -4,8 +4,6 @@ import me.commandrod.eventtools.api.listener.OptionalListener;
 import me.commandrod.eventtools.managers.ServerManager;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 

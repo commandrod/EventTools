@@ -22,7 +22,8 @@ import java.util.List;
 @CommandPermission("eventtools.heal")
 public class HealCommand extends TargetedCommand<CommandSender> {
 
-    @Dependency private ConfigManager configManager;
+    @Dependency
+    private ConfigManager configManager;
 
     public void handle(CommandSender sender, @Optional OnlinePlayer args) {
         Player player;

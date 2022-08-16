@@ -32,7 +32,7 @@ public class PlayerConnectionListener implements OptionalListener {
         spawnManager.teleport(player);
 
         Component msg = configManager.getTranslatedMessage("connection.join", "<dark_gray>[<green>+</green>]</dark_gray> <green>%player%</green>")
-                    .replaceText(Replacement.builder().replace("%player%", player.getName()).build());
+                .replaceText(Replacement.builder().replace("%player%", player.getName()).build());
 
         if (configManager.isEmpty(msg)) {
             event.joinMessage(Component.empty());

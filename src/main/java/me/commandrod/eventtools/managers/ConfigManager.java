@@ -2,7 +2,6 @@ package me.commandrod.eventtools.managers;
 
 import lombok.Getter;
 import me.commandrod.eventtools.api.message.Messages;
-import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
@@ -15,8 +14,10 @@ public class ConfigManager {
     private final MiniMessage miniMessage;
     private final PlainTextComponentSerializer plainTextComponentSerializer;
 
-    @Getter private Messages messages;
-    @Getter private FileConfiguration config;
+    @Getter
+    private Messages messages;
+    @Getter
+    private FileConfiguration config;
 
     public ConfigManager(Plugin plugin, MiniMessage miniMessage, PlainTextComponentSerializer plainTextComponentSerializer) {
         this.plugin = plugin;

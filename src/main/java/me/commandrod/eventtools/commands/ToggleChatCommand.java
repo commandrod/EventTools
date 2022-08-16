@@ -1,6 +1,9 @@
 package me.commandrod.eventtools.commands;
 
-import co.aikar.commands.annotation.*;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandCompletion;
+import co.aikar.commands.annotation.CommandPermission;
+import co.aikar.commands.annotation.Dependency;
 import me.commandrod.eventtools.api.commands.ArgsCommand;
 import me.commandrod.eventtools.managers.ConfigManager;
 import me.commandrod.eventtools.managers.ServerManager;
@@ -13,8 +16,10 @@ import org.bukkit.command.CommandSender;
 @CommandPermission("eventtools.mutechat")
 public class ToggleChatCommand extends ArgsCommand<CommandSender> {
 
-    @Dependency private ConfigManager configManager;
-    @Dependency private ServerManager serverManager;
+    @Dependency
+    private ConfigManager configManager;
+    @Dependency
+    private ServerManager serverManager;
 
     @CommandCompletion("-s @nothing")
     public void handle(CommandSender sender, String[] args) {

@@ -14,8 +14,10 @@ import org.bukkit.command.CommandSender;
 @CommandPermission("eventtools.togglemutedmessages")
 public class ToggleMutedMessagesCommand extends EmptyCommand<CommandSender> {
 
-    @Dependency private ServerManager serverManager;
-    @Dependency private ConfigManager configManager;
+    @Dependency
+    private ServerManager serverManager;
+    @Dependency
+    private ConfigManager configManager;
 
     public void handle(CommandSender sender) {
         boolean isViewer = serverManager.mutedChatViewer(sender);

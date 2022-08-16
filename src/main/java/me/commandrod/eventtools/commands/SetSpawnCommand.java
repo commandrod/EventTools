@@ -14,8 +14,10 @@ import org.bukkit.entity.Player;
 @CommandPermission("eventtools.setspawn")
 public class SetSpawnCommand extends EmptyCommand<Player> {
 
-    @Dependency private ConfigManager configManager;
-    @Dependency private SpawnManager spawnManager;
+    @Dependency
+    private ConfigManager configManager;
+    @Dependency
+    private SpawnManager spawnManager;
 
     @CommandCompletion("normal|spectator @nothing")
     public void handle(Player sender) {

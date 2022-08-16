@@ -16,8 +16,10 @@ import org.bukkit.command.CommandSender;
 @CommandPermission("eventtools.pvp")
 public class TogglePvPCommand extends ArgsCommand<CommandSender> {
 
-    @Dependency private ServerManager serverManager;
-    @Dependency private ConfigManager configManager;
+    @Dependency
+    private ServerManager serverManager;
+    @Dependency
+    private ConfigManager configManager;
 
     @CommandCompletion("-s @nothing")
     public void handle(CommandSender sender, String[] args) {
