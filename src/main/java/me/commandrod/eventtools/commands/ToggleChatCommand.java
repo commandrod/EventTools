@@ -12,7 +12,7 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
-@CommandAlias("unmutechat|mutechat|togglechat")
+@CommandAlias("chat|mutechat|togglechat")
 @CommandPermission("eventtools.mutechat")
 public class ToggleChatCommand extends ArgsCommand<CommandSender> {
 

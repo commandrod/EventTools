@@ -31,8 +31,8 @@ public class ToggleMutedMessagesCommand extends EmptyCommand<CommandSender> {
                                 .build()
                         )
         );
-
         if (configManager.isEmpty(msg)) return;
+
         sender.sendMessage(msg);
     }
 }

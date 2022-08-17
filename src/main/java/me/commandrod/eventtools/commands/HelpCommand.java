@@ -22,14 +22,13 @@ public class HelpCommand extends EmptyCommand<CommandSender> {
 
     private final Set<HelpCommandInformation> commands = new HashSet<>(Arrays.asList(
             new HelpCommandInformation("eventhelp", "Shows this message"),
-            new HelpCommandInformation("event", "Toggles the event"),
             new HelpCommandInformation("heal [player]", "Heals a player"),
             new HelpCommandInformation("rlcf", "Reloads the config"),
             new HelpCommandInformation("chat", "Toggles the chat"),
             new HelpCommandInformation("pvp", "Toggles the pvp"),
             new HelpCommandInformation("tmm", "Toggles visibility of messages during muted chat <gray>[FOR STAFF ONLY]</gray>"),
-            new HelpCommandInformation("espawn [spawnName] [player]", "Teleports to an event spawn"),
-            new HelpCommandInformation("esetspawn <spawnName>", "Sets a location for an event spawn")
+            new HelpCommandInformation("espawn [player]", "Teleports a player to the event spawn"),
+            new HelpCommandInformation("esetspawn", "Sets a location for the event spawn")
     ));
 
     public void handle(CommandSender sender) {
