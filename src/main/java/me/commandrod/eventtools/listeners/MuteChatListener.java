@@ -20,7 +20,7 @@ public record MuteChatListener(ConfigManager configManager,
         Player player = event.getPlayer();
 
         if (player.hasPermission("eventtools.mutechat.bypass")) return;
-        Component msg = configManager.getMessages().CHAT_PREFIX
+        Component msg = configManager.messageManager().CHAT_PREFIX
                 .append(configManager.getTranslatedMessage("chat.muted-chat-message",
                                 "<gold>%player%</gold><gray>:</gray> <yellow>%message%</yellow>")
                         .replaceText(Replacement.builder()
@@ -29,7 +29,7 @@ public record MuteChatListener(ConfigManager configManager,
                                 .build()
                         )
                 );
-        if (configManager.isEmpty(msg)) return;
+        if (configManager.messageManager().isEmpty(msg)) return;
 
         for (Audience audience : serverManager.getMutedChatViewers()) {
             audience.sendMessage(msg);

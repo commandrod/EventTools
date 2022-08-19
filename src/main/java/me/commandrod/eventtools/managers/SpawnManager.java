@@ -27,6 +27,8 @@ public class SpawnManager {
     public void setSpawn(@Nullable Location location) {
         if (location == null) return;
         configManager.getConfig().set(path, location);
+        configManager.save();
+        configManager.reload();
     }
 
     public boolean teleport(Player player) {

@@ -1,7 +1,7 @@
 package me.commandrod.eventtools.managers;
 
 import lombok.Getter;
-import me.commandrod.eventtools.api.message.Messages;
+import lombok.experimental.Accessors;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
@@ -14,8 +14,8 @@ public class ConfigManager {
     private final MiniMessage miniMessage;
     private final PlainTextComponentSerializer plainTextComponentSerializer;
 
-    @Getter
-    private Messages messages;
+    @Getter @Accessors(fluent = true)
+    private MessageManager messageManager;
     @Getter
     private FileConfiguration config;
 
@@ -25,7 +25,7 @@ public class ConfigManager {
         this.plainTextComponentSerializer = plainTextComponentSerializer;
 
         this.config = plugin.getConfig();
-        this.messages = new Messages(this);
+        this.messageManager = new MessageManager(this, plainTextComponentSerializer);
     }
 
     public boolean getBoolean(String path, boolean def) {
@@ -53,10 +53,6 @@ public class ConfigManager {
         return miniMessage.deserialize(message);
     }
 
-    public boolean isEmpty(Component msg) {
-        return plainTextComponentSerializer.serialize(msg).length() == 0;
-    }
-
     public void save() {
         plugin.saveConfig();
     }
@@ -64,6 +60,6 @@ public class ConfigManager {
     public void reload() {
         plugin.reloadConfig();
         this.config = plugin.getConfig();
-        this.messages = new Messages(this);
+        this.messageManager = new MessageManager(this, plainTextComponentSerializer);
     }
 }

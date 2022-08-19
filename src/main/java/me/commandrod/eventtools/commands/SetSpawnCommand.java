@@ -6,6 +6,7 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Dependency;
 import me.commandrod.eventtools.api.commands.EmptyCommand;
 import me.commandrod.eventtools.managers.ConfigManager;
+import me.commandrod.eventtools.managers.MessageManager;
 import me.commandrod.eventtools.managers.SpawnManager;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
@@ -22,11 +23,12 @@ public class SetSpawnCommand extends EmptyCommand<Player> {
     @CommandCompletion("normal|spectator @nothing")
     public void handle(Player sender) {
         spawnManager.setSpawn(sender.getLocation());
+        MessageManager messageManager = configManager.messageManager();
 
-        Component msg = configManager.getMessages().CONFIG_PREFIX.append(
+        Component msg = messageManager.CONFIG_PREFIX.append(
                 configManager.getTranslatedMessage("spawn.set", "<yellow>Successfully set the spawn location!</yellow>")
         );
-        if (configManager.isEmpty(msg)) return;
+        if (messageManager.isEmpty(msg)) return;
 
         sender.sendMessage(msg);
     }

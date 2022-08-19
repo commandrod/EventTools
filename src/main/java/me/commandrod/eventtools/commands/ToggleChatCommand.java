@@ -6,6 +6,7 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Dependency;
 import me.commandrod.eventtools.api.commands.ArgsCommand;
 import me.commandrod.eventtools.managers.ConfigManager;
+import me.commandrod.eventtools.managers.MessageManager;
 import me.commandrod.eventtools.managers.ServerManager;
 import me.commandrod.eventtools.utils.Replacement;
 import net.kyori.adventure.text.Component;
@@ -25,18 +26,19 @@ public class ToggleChatCommand extends ArgsCommand<CommandSender> {
     public void handle(CommandSender sender, String[] args) {
         boolean isMuted = serverManager.toggleChat();
         String state = isMuted ? "<red>MUTED</red>" : "<green>UNMUTED</green>";
+        MessageManager messageManager = configManager.messageManager();
 
-        Component msg = configManager.getMessages().PREFIX.append(
+        Component msg = messageManager.PREFIX.append(
                 configManager.getTranslatedMessage(isMuted ? "chat.muted" : "chat.unmuted", "Chat has been %state%!")
                         .replaceText(Replacement.builder().replace("%state%", state).build())
         );
 
         if (args.length != 0 && args[0].equalsIgnoreCase("-s")) {
-            sender.sendMessage(msg.append(configManager.getMessages().SILENT));
+            sender.sendMessage(msg.append(messageManager.SILENT));
             return;
         }
 
-        if (configManager.isEmpty(msg)) return;
+        if (messageManager.isEmpty(msg)) return;
         Bukkit.broadcast(msg);
     }
 }

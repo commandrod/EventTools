@@ -7,6 +7,7 @@ import co.aikar.commands.annotation.Optional;
 import co.aikar.commands.bukkit.contexts.OnlinePlayer;
 import me.commandrod.eventtools.api.commands.TargetedCommand;
 import me.commandrod.eventtools.managers.ConfigManager;
+import me.commandrod.eventtools.managers.MessageManager;
 import me.commandrod.eventtools.utils.Replacement;
 import net.kyori.adventure.text.Component;
 import org.bukkit.attribute.Attribute;
@@ -43,12 +44,13 @@ public class HealCommand extends TargetedCommand<CommandSender> {
         for (PotionEffectType potion : potions) {
             player.removePotionEffect(potion);
         }
+        MessageManager messageManager = configManager.messageManager();
 
-        Component msg = configManager.getMessages().PREFIX.append(
+        Component msg = messageManager.PREFIX.append(
                 configManager.getTranslatedMessage("heal", "You healed <yellow>%player%</yellow>!")
                         .replaceText(Replacement.builder().replace("%player%", player.getName()).build())
         );
-        if (configManager.isEmpty(msg)) return;
+        if (messageManager.isEmpty(msg)) return;
 
         player.sendMessage(msg);
     }

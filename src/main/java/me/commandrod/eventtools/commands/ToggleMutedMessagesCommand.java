@@ -5,6 +5,7 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Dependency;
 import me.commandrod.eventtools.api.commands.EmptyCommand;
 import me.commandrod.eventtools.managers.ConfigManager;
+import me.commandrod.eventtools.managers.MessageManager;
 import me.commandrod.eventtools.managers.ServerManager;
 import me.commandrod.eventtools.utils.Replacement;
 import net.kyori.adventure.text.Component;
@@ -24,14 +25,16 @@ public class ToggleMutedMessagesCommand extends EmptyCommand<CommandSender> {
         String path = isViewer
                 ? "chat.add-muted-chat-viewer"
                 : "chat.remove-muted-chat-viewer";
-        Component msg = configManager.getMessages().CHAT_PREFIX.append(
+        MessageManager messageManager = configManager.messageManager();
+
+        Component msg = messageManager.CHAT_PREFIX.append(
                 configManager.getTranslatedMessage(path, "Now %state% messages while chat is muted!")
                         .replaceText(Replacement.builder()
                                 .replace("%state%", isViewer ? "<green>VIEWING</green>" : "<red>HIDING</red>")
                                 .build()
                         )
         );
-        if (configManager.isEmpty(msg)) return;
+        if (messageManager.isEmpty(msg)) return;
 
         sender.sendMessage(msg);
     }
