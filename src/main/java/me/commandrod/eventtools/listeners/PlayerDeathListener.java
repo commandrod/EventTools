@@ -59,7 +59,7 @@ public class PlayerDeathListener implements OptionalListener {
         if (event.isAnchorSpawn() || event.isBedSpawn()) return;
 
         Component msg = configManager.getTranslatedMessage("deaths.respawn", "NONE");
-        if (!configManager.isEmpty(msg)) {
+        if (!configManager.messageManager().isEmpty(msg)) {
             event.getPlayer().sendMessage(msg);
         }
 
