@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 
 @CommandAlias("eventspawn|espawn")
 @CommandPermission("eventtools.spawn")
-public class SpawnCommand extends TargetedCommand<Player> {
+public class SpawnCommand extends TargetedCommand {
 
     @Dependency
     private ConfigManager configManager;

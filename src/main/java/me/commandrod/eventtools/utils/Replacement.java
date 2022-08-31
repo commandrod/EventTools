@@ -26,7 +26,7 @@ public class Replacement {
     }
 
     public Replacement replace(@RegExp String placeholder, ComponentLike value) {
-        this.replacementBuilder.match(placeholder).replacement(value);
+        this.replacementBuilder.match(placeholder).replacement(value.asComponent());
         return this;
     }
 
