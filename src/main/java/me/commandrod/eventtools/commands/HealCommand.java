@@ -11,7 +11,6 @@ import me.commandrod.eventtools.utils.Replacement;
 import net.kyori.adventure.text.Component;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -20,18 +19,13 @@ import java.util.List;
 
 @CommandAlias("heal")
 @CommandPermission("eventtools.heal")
-public class HealCommand extends TargetedCommand<CommandSender> {
+public class HealCommand extends TargetedCommand {
 
     @Dependency
     private ConfigManager configManager;
 
-    public void handle(CommandSender sender, @Optional OnlinePlayer args) {
-        Player player;
-        if (!(sender instanceof Player)) {
-            player = args.getPlayer();
-        } else {
-            player = (Player) sender;
-        }
+    public void handle(Player sender, @Optional OnlinePlayer args) {
+        Player player = args.getPlayer();
 
         AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         player.setHealth(attribute == null ? 20 : attribute.getBaseValue());
@@ -46,7 +40,9 @@ public class HealCommand extends TargetedCommand<CommandSender> {
 
         Component msg = configManager.getMessages().PREFIX.append(
                 configManager.getTranslatedMessage("heal", "You healed <yellow>%player%</yellow>!")
-                        .replaceText(Replacement.builder().replace("%player%", player.getName()).build())
+                        .replaceText(Replacement.builder()
+                                .replace("%player%", player.getName())
+                                .build())
         );
         if (configManager.isEmpty(msg)) return;
 
