@@ -65,5 +65,6 @@ public final class Main extends JavaPlugin {
         this.commandManager.register(new TogglePvPCommand());
         this.commandManager.register(new SetSpawnCommand());
         this.commandManager.register(new SpawnCommand());
+        this.commandManager.register(new GameModeCommand());
     }
 }

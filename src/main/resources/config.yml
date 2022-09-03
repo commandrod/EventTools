@@ -38,6 +38,8 @@ constants:
   config: "<yellow>Config</yellow><dark_gray> > </dark_gray><gray>"
   silent: " <gray>[SILENT]</gray>"
 messages:
+  gamemode:
+    change: "<gray>Set <yellow>%player%</yellow>'s gamemode to <yellow>%gamemode%!</gray>"
   connection:
     join: '<dark_gray>[<green>+</green>]</dark_gray> <green>%player%</green>'
     quit: '<dark_gray>[<red>-</red>]</dark_gray> <red>%player%</red>'
