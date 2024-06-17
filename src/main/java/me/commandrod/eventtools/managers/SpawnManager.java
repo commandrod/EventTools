@@ -27,10 +27,13 @@ public class SpawnManager {
     public void setSpawn(@Nullable Location location) {
         if (location == null) return;
         configManager.getConfig().set(path, location);
+        configManager.save();
+        configManager.reload();
     }
 
     public boolean teleport(Player player) {
-        getSpawn().ifPresent(player::teleportAsync);
-        return getSpawn().isPresent();
+        Optional<Location> spawn = getSpawn();
+        spawn.ifPresent(player::teleportAsync);
+        return spawn.isPresent();
     }
 }

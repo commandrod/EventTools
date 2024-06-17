@@ -14,7 +14,11 @@ public class CommandManager {
         this.commandManager = new PaperCommandManager(plugin);
     }
 
-    public void register(BaseCommand command) {
+    public <T> void registerDependency(Class<? extends T> clazz, T instance) {
+        this.commandManager.registerDependency(clazz, instance);
+    }
+
+    public void registerCommand(BaseCommand command) {
         this.commandManager.registerCommand(command);
     }
 }

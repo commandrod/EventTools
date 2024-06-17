@@ -5,6 +5,7 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Dependency;
 import me.commandrod.eventtools.api.commands.EmptyCommand;
 import me.commandrod.eventtools.managers.ConfigManager;
+import me.commandrod.eventtools.managers.MessageManager;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.CommandSender;
 
@@ -17,12 +18,13 @@ public class ReloadConfigCommand extends EmptyCommand<CommandSender> {
 
     public void handle(CommandSender sender) {
         configManager.reload();
+        MessageManager messageManager = configManager.messageManager();
 
-        Component msg = configManager.getMessages().CONFIG_PREFIX.append(
+        Component msg = messageManager.CONFIG_PREFIX.append(
                 configManager.getTranslatedMessage("reload-config", "Config has been successfully reloaded!" +
                         " <gray>[Handlers require a plugin reload to function in case they were changed]</gray>")
         );
-        if (configManager.isEmpty(msg)) return;
+        if (messageManager.isEmpty(msg)) return;
 
         sender.sendMessage(msg);
     }

@@ -1,6 +1,5 @@
 package me.commandrod.eventtools;
 
-import co.aikar.commands.PaperCommandManager;
 import lombok.Getter;
 import me.commandrod.eventtools.commands.*;
 import me.commandrod.eventtools.listeners.MuteChatListener;
@@ -48,22 +47,21 @@ public final class Main extends JavaPlugin {
     }
 
     public void registerDependencies() {
-        PaperCommandManager paperCommandManager = commandManager.getCommandManager();
-        paperCommandManager.registerDependency(ServerManager.class, serverManager);
-        paperCommandManager.registerDependency(ConfigManager.class, configManager);
-        paperCommandManager.registerDependency(ListenerManager.class, listenerManager);
-        paperCommandManager.registerDependency(SpawnManager.class, spawnManager);
-        paperCommandManager.registerDependency(MiniMessage.class, miniMessage);
+        commandManager.registerDependency(ServerManager.class, serverManager);
+        commandManager.registerDependency(ConfigManager.class, configManager);
+        commandManager.registerDependency(ListenerManager.class, listenerManager);
+        commandManager.registerDependency(SpawnManager.class, spawnManager);
+        commandManager.registerDependency(MiniMessage.class, miniMessage);
     }
 
     public void registerCommands() {
-        this.commandManager.register(new HelpCommand());
-        this.commandManager.register(new ReloadConfigCommand());
-        this.commandManager.register(new HealCommand());
-        this.commandManager.register(new ToggleChatCommand());
-        this.commandManager.register(new ToggleMutedMessagesCommand());
-        this.commandManager.register(new TogglePvPCommand());
-        this.commandManager.register(new SetSpawnCommand());
-        this.commandManager.register(new SpawnCommand());
+        commandManager.registerCommand(new HelpCommand());
+        commandManager.registerCommand(new ReloadConfigCommand());
+        commandManager.registerCommand(new HealCommand());
+        commandManager.registerCommand(new ToggleChatCommand());
+        commandManager.registerCommand(new ToggleMutedMessagesCommand());
+        commandManager.registerCommand(new TogglePvPCommand());
+        commandManager.registerCommand(new SetSpawnCommand());
+        commandManager.registerCommand(new SpawnCommand());
     }
 }

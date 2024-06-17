@@ -6,6 +6,7 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Dependency;
 import me.commandrod.eventtools.api.commands.ArgsCommand;
 import me.commandrod.eventtools.managers.ConfigManager;
+import me.commandrod.eventtools.managers.MessageManager;
 import me.commandrod.eventtools.managers.ServerManager;
 import me.commandrod.eventtools.utils.Replacement;
 import net.kyori.adventure.text.Component;
@@ -25,18 +26,19 @@ public class TogglePvPCommand extends ArgsCommand<CommandSender> {
     public void handle(CommandSender sender, String[] args) {
         boolean isPvP = serverManager.togglePvP();
         String state = isPvP ? "<green>ENABLED</green>" : "<red>DISABLED</red>";
+        MessageManager messageManager = configManager.messageManager();
 
-        Component msg = configManager.getMessages().PREFIX.append(
+        Component msg = messageManager.PREFIX.append(
                 configManager.getTranslatedMessage(isPvP ? "pvp.enabled" : "pvp.disabled", "PvP has been %state%!")
                         .replaceText(Replacement.builder().replace("%state%", state).build())
         );
 
         if (args.length != 0 && args[0].equalsIgnoreCase("-s")) {
-            sender.sendMessage(msg.append(configManager.getMessages().SILENT));
+            sender.sendMessage(msg.append(messageManager.SILENT));
             return;
         }
 
-        if (configManager.isEmpty(msg)) return;
+        if (messageManager.isEmpty(msg)) return;
         Bukkit.broadcast(msg);
     }
 }

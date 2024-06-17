@@ -34,7 +34,7 @@ public class PlayerConnectionListener implements OptionalListener {
         Component msg = configManager.getTranslatedMessage("connection.join", "<dark_gray>[<green>+</green>]</dark_gray> <green>%player%</green>")
                 .replaceText(Replacement.builder().replace("%player%", player.getName()).build());
 
-        if (configManager.isEmpty(msg)) {
+        if (configManager.messageManager().isEmpty(msg)) {
             event.joinMessage(Component.empty());
             return;
         }
@@ -49,7 +49,7 @@ public class PlayerConnectionListener implements OptionalListener {
         Component msg = configManager.getTranslatedMessage("connection.quit", "<dark_gray>[<red>-</red>]</dark_gray> <red>%player%</red>")
                 .replaceText(Replacement.builder().replace("%player%", player.getName()).build());
 
-        if (configManager.isEmpty(msg)) {
+        if (configManager.messageManager().isEmpty(msg)) {
             event.quitMessage(Component.empty());
             return;
         }
