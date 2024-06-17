@@ -25,9 +25,10 @@ public record MuteChatListener(ConfigManager configManager,
                                 "<gold>%player%</gold><gray>:</gray> <yellow>%message%</yellow>")
                         .replaceText(Replacement.builder()
                                 .replace("%player%", player.getName())
+                                .build())
+                        .replaceText(Replacement.builder()
                                 .replace("%message%", event.message())
-                                .build()
-                        )
+                                .build())
                 );
         if (configManager.messageManager().isEmpty(msg)) return;
 
